@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  roles: ['lxd_container']
+
+- hosts: sf-ansible
+  roles: ['vsftpd']  

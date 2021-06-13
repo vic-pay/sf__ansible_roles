@@ -1,0 +1,17 @@
+---
+- name: install packages
+  apt:
+    name: ['vsftpd']
+    state: 'present'
+    update_cache: yes
+
+- name: allow local login
+  lineinfile:
+    path:   /etc/vsftpd.conf
+    regexp: '^local_enable='
+    line:   local_enable=YES
+
+- name: restarting service
+  systemd:
+    name: vsftpd
+    state: restarted  
